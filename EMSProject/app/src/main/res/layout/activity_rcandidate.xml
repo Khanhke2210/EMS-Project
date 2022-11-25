@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RCandidate">
+
+    <ImageView
+        android:id="@+id/imvLogo"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        app:srcCompat="@drawable/ems_logo_mini"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"/>
+
+    <TableLayout
+        android:id="@+id/tblLogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/imvLogo"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="#000000"
+        android:backgroundTint="#B5B5B5"
+        android:stretchColumns="1">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="2dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginRight="2dp"
+            android:layout_marginBottom="2dp"
+            android:background="#FFFFFF">
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="40dp"
+                android:layout_height="match_parent"
+                android:background="#FFFFFF"
+                app:srcCompat="@drawable/ic_person_01" />
+
+            <EditText
+                android:id="@+id/edtRCName"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:background="#FFFFFF"
+                android:layout_marginLeft="5dp"
+                android:ems="10"
+                android:hint="Name"
+                android:textColorHint="#020202" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="2dp"
+            android:layout_marginBottom="2dp"
+            android:background="#FFFFFF">
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="40dp"
+                android:layout_height="match_parent"
+                android:background="#FFFFFF"
+                app:srcCompat="@drawable/ic_calendar_01" />
+
+            <EditText
+                android:id="@+id/edtRegisterPassword"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:background="#FFFFFF"
+                android:layout_marginLeft="5dp"
+                android:ems="10"
+                android:hint="Age"
+                android:inputType="number"
+                android:textColorHint="#000000" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+        </TableRow>
+    </TableLayout>
+
+    <RadioGroup
+        android:id="@+id/rdgRCGender"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tblLogin"
+        android:layout_marginLeft="20dp"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/rdbRCMale"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:checked="true"
+            android:text="Male" />
+
+        <RadioButton
+            android:id="@+id/rdbRCFemale"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Female" />
+    </RadioGroup>
+
+    <TableLayout
+        android:id="@+id/tblLogin2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rdgRCGender"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="#000000"
+        android:backgroundTint="#B5B5B5"
+        android:stretchColumns="1">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="2dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginRight="2dp"
+            android:layout_marginBottom="2dp"
+            android:background="#FFFFFF">
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="40dp"
+                android:layout_height="match_parent"
+                android:background="#FFFFFF"
+                app:srcCompat="@drawable/ic_type_01" />
+
+            <EditText
+                android:id="@+id/edtRCMajor"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:background="#FFFFFF"
+                android:layout_marginLeft="5dp"
+                android:ems="10"
+                android:hint="Major"
+                android:textColorHint="#020202" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="2dp"
+            android:layout_marginBottom="2dp"
+            android:background="#FFFFFF">
+
+            <ImageView
+                android:id="@+id/imageView4"
+                android:layout_width="40dp"
+                android:layout_height="match_parent"
+                android:background="#FFFFFF"
+                app:srcCompat="@drawable/ic_mobile_01" />
+
+            <EditText
+                android:id="@+id/edtRCMobile"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:background="#FFFFFF"
+                android:layout_marginLeft="5dp"
+                android:ems="10"
+                android:hint="Mobile"
+                android:inputType="number"
+                android:textColorHint="#000000" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+        </TableRow>
+    </TableLayout>
+
+    <Button
+        android:id="@+id/btnRCSubmit"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tblLogin2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="#000000"
+        android:text="Submit" />
+
+</RelativeLayout>

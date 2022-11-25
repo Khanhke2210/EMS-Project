@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "351286911989",
+    "project_id": "ems-database-2c89b",
+    "storage_bucket": "ems-database-2c89b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:351286911989:android:88e02bfe4f62caa15836bc",
+        "android_client_info": {
+          "package_name": "com.example.emsproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "351286911989-rt0g4hphuu30gpro1ev8racgcbpea2fr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyClcOfKZTB-QiUezaL-QGwz6skzRASpgi8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "351286911989-rt0g4hphuu30gpro1ev8racgcbpea2fr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -57,36 +57,6 @@ public class RegisterActivity extends AppCompatActivity {
         password = edtRegister_Password.getText().toString().trim();
         confirm = edtRegister_Confirm.getText().toString().trim();
 
-        edtValidation();
-
-        fAuth.createUserWithEmailAndPassword(email, password).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
-            @Override
-            public void onSuccess(AuthResult authResult) {
-                if(rdbRegister_Candidate.isChecked()) {
-                    toRCandidate();
-                }
-
-                if(rdbRegister_Organization.isChecked()) {
-                    toROrganization();
-                }
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Toast.makeText(RegisterActivity.this, "Failed : " + e.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
-
-    private void toRCandidate() {
-        startActivity(new Intent(RegisterActivity.this, RCandidateActivity.class));
-    }
-
-    private void toROrganization() {
-        startActivity(new Intent(RegisterActivity.this, ROganizationActivity.class));
-    }
-
-    private void edtValidation() {
         if(TextUtils.isEmpty(email)) {
             edtRegister_Email.setError("Please enter an email");
             return;
@@ -102,9 +72,38 @@ public class RegisterActivity extends AppCompatActivity {
             return;
         }
 
-        if(password.equals(confirm) == false) {
+        if(!password.equals(confirm)) {
             edtRegister_Confirm.setError("Wrong password please try again");
             return;
         }
+
+        fAuth.createUserWithEmailAndPassword(email, password).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
+            @Override
+            public void onSuccess(AuthResult authResult) {
+                if(rdbRegister_Candidate.isChecked()) {
+                    toRCandidate();
+                }
+
+                if(rdbRegister_Organization.isChecked()) {
+                    toROrganization();
+                }
+
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(RegisterActivity.this, "Failed : " + e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
+    }
+
+    private void toRCandidate() {
+        startActivity(new Intent(RegisterActivity.this, RCandidateActivity.class));
+    }
+
+    private void toROrganization() {
+        startActivity(new Intent(RegisterActivity.this, ROganizationActivity.class));
     }
 }

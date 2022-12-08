@@ -17,12 +17,15 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
+import Controller.DataManager;
+
 public class RegisterActivity extends AppCompatActivity {
     private EditText edtRegister_Email, edtRegister_Password, edtRegister_Confirm;
     private Button btnRegister;
     private RadioButton rdbRegister_Organization, rdbRegister_Candidate;
-    private FirebaseAuth fAuth;
     private String email, password, confirm;
+    private DataManager dataFetching;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +43,7 @@ public class RegisterActivity extends AppCompatActivity {
         btnRegister = (Button) findViewById(R.id.btnRegister);
         rdbRegister_Candidate = (RadioButton) findViewById(R.id.rdbCandidate);
         rdbRegister_Organization = (RadioButton) findViewById(R.id.rdbOrganization);
-        fAuth = FirebaseAuth.getInstance();
+        dataFetching = new DataManager();
     }
 
     private void ActionListener() {
@@ -77,33 +80,20 @@ public class RegisterActivity extends AppCompatActivity {
             return;
         }
 
-        fAuth.createUserWithEmailAndPassword(email, password).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
-            @Override
-            public void onSuccess(AuthResult authResult) {
-                if(rdbRegister_Candidate.isChecked()) {
-                    toRCandidate();
-                }
+        String direction = "toROrganization";
 
-                if(rdbRegister_Organization.isChecked()) {
-                    toROrganization();
-                }
+        if(rdbRegister_Candidate.isChecked()) {
+            direction = "toRCandidate";
+        }
 
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Toast.makeText(RegisterActivity.this, "Failed : " + e.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });
-
-
+        dataFetching.SignNewUpAccount(email, password, RegisterActivity.this, direction);
     }
 
-    private void toRCandidate() {
+    public void toRCandidate() {
         startActivity(new Intent(RegisterActivity.this, RCandidateActivity.class));
     }
 
-    private void toROrganization() {
+    public void toROrganization() {
         startActivity(new Intent(RegisterActivity.this, ROganizationActivity.class));
     }
 }

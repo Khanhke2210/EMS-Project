@@ -20,13 +20,15 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.HashMap;
 import java.util.Map;
 
+import Controller.DataManager;
+
 public class ROganizationActivity extends AppCompatActivity {
     private EditText edtRO_Name, edtRO_Major, edtRO_Address, edtRO_Mobile;
     private Button btnRO_Submit;
     private FirebaseAuth fAuth;
-    private FirebaseFirestore fStore;
     private FirebaseUser fUser;
     private String name, major, address, mobile;
+    private DataManager dataManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +45,7 @@ public class ROganizationActivity extends AppCompatActivity {
         edtRO_Mobile = (EditText) findViewById(R.id.edtROPhone);
         btnRO_Submit = (Button) findViewById(R.id.btnROSubmit);
         fAuth = FirebaseAuth.getInstance();
-        fStore = FirebaseFirestore.getInstance();
+        dataManager = new DataManager();
         fUser = fAuth.getCurrentUser();
     }
 
@@ -62,26 +64,6 @@ public class ROganizationActivity extends AppCompatActivity {
         address = edtRO_Address.getText().toString().trim();
         mobile = edtRO_Mobile.getText().toString().trim();
         String uid = fUser.getUid();
-
-        DocumentReference documentReference = fStore.collection("Organization").document(uid);
-        Map<String, Object> organization = new HashMap<>();
-        organization.put("Uid", uid);
-        organization.put("Organization", name);
-        organization.put("Address", address);
-        organization.put("Mobile", mobile);
-        organization.put("Major", major);
-
-        documentReference.set(organization).addOnSuccessListener(new OnSuccessListener<Void>() {
-            @Override
-            public void onSuccess(Void unused) {
-                finish();
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Toast.makeText(ROganizationActivity.this, "Failed : " + e, Toast.LENGTH_SHORT).show();
-            }
-        });
 
         if(TextUtils.isEmpty(name)) {
             edtRO_Name.setError("Please enter organization name");
@@ -103,16 +85,12 @@ public class ROganizationActivity extends AppCompatActivity {
             return;
         }
 
-        documentReference.set(organization).addOnSuccessListener(new OnSuccessListener<Void>() {
-            @Override
-            public void onSuccess(Void unused) {
-                finish();
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Toast.makeText(ROganizationActivity.this, "Failed : " + e, Toast.LENGTH_SHORT).show();
-            }
-        });
+        Map<String, Object> organization = new HashMap<>();
+        organization.put("Organization", name);
+        organization.put("Address", address);
+        organization.put("Mobile", mobile);
+        organization.put("Major", major);
+
+        dataManager.SetUpDocumentation("Organization", uid, ROganizationActivity.this, organization);
     }
 }

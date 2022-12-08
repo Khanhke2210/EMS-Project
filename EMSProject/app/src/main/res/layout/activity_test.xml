@@ -4,55 +4,239 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:backgroundTint="#FFFFFF"
     tools:context=".TestActivity">
 
+    <ImageView
+        android:id="@+id/imvTestLogo"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:visibility="visible"
+        app:srcCompat="@drawable/ems_logo_mini" />
 
     <RelativeLayout
-        android:layout_width="200dp"
+        android:id="@+id/rltTestStart"
+        android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:layout_centerInParent="true">
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:visibility="gone">
+
+        <RelativeLayout
+            android:id="@+id/rltLine01"
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:layout_alignParentTop="true"
+            android:background="@color/black"></RelativeLayout>
 
         <TextView
             android:id="@+id/tvwDetailName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@id/rltLine01"
             android:layout_centerHorizontal="true"
-            android:textSize="20sp"
+            android:layout_marginTop="10dp"
+            android:text="Name of the test"
             android:textColor="@color/black"
-            android:text="Name of the test" />
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/tvwDetailID"
-            android:layout_below="@id/tvwDetailName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@id/tvwDetailName"
             android:layout_centerHorizontal="true"
-            android:textColor="@color/black"
-            android:text="ID : 0000" />
+            android:text="ID : 0000"
+            android:textColor="@color/black" />
 
         <TextView
             android:id="@+id/tvwDetailCompany"
-            android:layout_below="@id/tvwDetailID"
-            android:layout_centerHorizontal="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            android:text="Company Name" />
+            android:layout_below="@id/tvwDetailID"
+            android:layout_centerHorizontal="true"
+            android:text="Company Name"
+            android:textColor="@color/black" />
 
-        <TextView
-            android:id="@+id/tvwDetailDescribe"
+        <Button
+            android:id="@+id/btnTestStart"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/tvwDetailCompany"
-            android:text="Description" />
-
-        <Button
-            android:id="@+id/button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:layout_below="@id/tvwDetailDescribe"
+            android:layout_marginTop="5dp"
             android:backgroundTint="@color/black"
             android:text="Start" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:layout_below="@id/tvwTestResult"
+            android:layout_marginTop="20dp"
+            android:background="@color/black"></RelativeLayout>
+
+        <TextView
+            android:id="@+id/tvwTestResult"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvwDetailCompany"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:text="TextView"
+            android:textSize="20sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rltTestIn"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        android:background="#FFFFFF"
+        android:visibility="visible">
+
+        <TableLayout
+            android:id="@+id/tblTestQuestion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:stretchColumns="0">
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/tvwTestQuestion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Question 0"
+                    android:textColor="#000000"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/tvwTestDescription"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:text="TextView"
+                    android:textColor="#494949" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/edtTestAnswer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="200dp"
+                    android:background="#FFFFFF"
+                    android:ems="10"
+                    android:gravity="top"
+                    android:hint="Write your answer"
+                    android:inputType="textPersonName"
+                    android:padding="2dp"
+                    android:visibility="gone" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <Button
+                    android:id="@+id/btnTestA"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#000000"
+                    android:text="Q1"
+                    android:textColor="#FFFFFF" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <Button
+                    android:id="@+id/btnTestB"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#000000"
+                    android:text="Q2"
+                    android:textColor="#FFFFFF" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <Button
+                    android:id="@+id/btnTestC"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#000000"
+                    android:text="Q3"
+                    android:textColor="#FFFFFF" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <Button
+                    android:id="@+id/btnTestD"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#000000"
+                    android:text="Q4"
+                    android:textColor="#FFFFFF" />
+            </TableRow>
+
+        </TableLayout>
+
+        <Button
+            android:id="@+id/btnTestPrevious"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tblTestQuestion"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="20dp"
+            android:backgroundTint="#FFFFFF"
+            android:text="Previous"
+            android:textColor="#000000"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/btnTestNext"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tblTestQuestion"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"
+            android:backgroundTint="#FFFFFF"
+            android:text="Next"
+            android:textColor="#000000"
+            android:textStyle="bold" />
+
+        <Button
+            android:textColor="@color/black"
+            android:backgroundTint="@color/white"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/tblTestQuestion"
+            android:id="@+id/btnTestFinish"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Submit" />
+
     </RelativeLayout>
 </RelativeLayout>

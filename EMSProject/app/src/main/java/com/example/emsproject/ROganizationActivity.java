@@ -40,7 +40,7 @@ public class ROganizationActivity extends AppCompatActivity {
 
     private void ConstraintsGUI() {
         edtRO_Name = (EditText) findViewById(R.id.edtROName);
-        edtRO_Major = (EditText) findViewById(R.id.edtRCMajor);
+        edtRO_Major = (EditText) findViewById(R.id.edtROMajor);
         edtRO_Address = (EditText) findViewById(R.id.edtROAddress);
         edtRO_Mobile = (EditText) findViewById(R.id.edtROPhone);
         btnRO_Submit = (Button) findViewById(R.id.btnROSubmit);
